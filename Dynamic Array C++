@@ -1,0 +1,67 @@
+// Dynamic Array
+#include <iostream>
+#include <string>
+using namespace std;
+
+class DynamicArray{
+    int len;
+    int index;
+    int *arr =  new int[1];
+    
+    public: 
+    DynamicArray(){
+        len = 1;
+        index = 0;
+        
+    }
+    
+    void insert(int x){
+        if(this->index == this->len){
+            this->len = this->len*2;
+            int *temp = new int[this->len];
+            for(int i = 0; i < index; i++){
+                temp[i] = this->arr[i];   
+            }
+            this->arr = temp;
+        }
+        arr[index] = x;
+        index++;
+    }
+    
+    int get(int place){
+        return arr[place];   
+    }
+    
+    void remove(int place){
+        
+    }
+};
+
+int main()
+{
+    DynamicArray test;
+    test.insert(2);
+    cout<<test.get(0)<<endl;
+    test.insert(4);
+    cout<<test.get(1)<<endl;
+    test.insert(6);
+    test.insert(3);
+    test.insert(6);
+    test.insert(3);
+    test.insert(6);
+    test.insert(3);
+    test.insert(6);
+    test.insert(3);
+    test.insert(6);
+    test.insert(3);
+    test.insert(6);
+    test.insert(3);
+    test.insert(6);
+    test.insert(3);
+    cout<<test.get(3)<<endl;
+    cout<<test.get(4)<<endl;
+    cout<<test.get(11)<<endl;
+    
+    
+    
+}
