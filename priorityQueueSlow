@@ -1,0 +1,79 @@
+
+#include <iostream>
+#include <string>
+#include<queue>
+using namespace std;
+
+struct item {
+    int val;
+    int priority;
+};
+
+class priorityQueue
+{
+private:
+    vector<item> q;
+public:
+  void insert (int x,int priority)
+  {
+    item newItem;
+    newItem.val = x;
+    newItem.priority = priority;
+    q.push_back(newItem);
+  }
+  
+  int getHighestPriority(){
+      int max = 0;
+      int index = 0;
+      int i;
+      for(i = 0; i < q.size(); i++){
+          if(q[i].priority > max){
+              index = i;
+              max = q[i].priority;
+          }
+      }
+      return q[index].val;
+      
+  }
+
+  void deleteHighestPriority()
+  {
+     int max = 0;
+      int index;
+      int i;
+      for(i = 0; i < q.size(); i++){
+          if(q[i].priority > max){
+              index = i;
+              max = q[i].priority;
+          }
+      }
+      
+      for(int j = index; j < q.size()-1; j++){
+          q[j] = q[j+1];
+      }
+  }
+
+};
+
+int
+main ()
+{
+    priorityQueue q;
+    q.insert(5,4);
+    q.insert(2,4);
+    q.insert(1,22);
+    q.insert(2,7);
+    q.insert(4,4);
+    
+    cout<<q.getHighestPriority()<<endl;
+    q.deleteHighestPriority();
+    cout<<q.getHighestPriority()<<endl;
+    q.deleteHighestPriority();
+    cout<<q.getHighestPriority()<<endl;
+    q.deleteHighestPriority();
+    cout<<q.getHighestPriority()<<endl;
+    q.deleteHighestPriority();
+    cout<<q.getHighestPriority()<<endl;
+    q.deleteHighestPriority();
+    
+}
